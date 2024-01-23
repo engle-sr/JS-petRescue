@@ -24,18 +24,43 @@ const createPet = function (name, species) {
 return pet;
 };
 
-const baxter = createPet("Baxter", "cat-Unknown");
-const bailey = createPet("Bailey", "dog-Black Lab");
-const kitty = createPet("Kitty", "cat-Unknown");
-const abby = createPet("Abby", "dog-Yellow Lab");
-const snape = createPet("Snape", "snake-Garden Snake"); 
+const baxter = createPet("Baxter", "senior house cat");
+const bailey = createPet("Bailey", "black lab");
+const kitty = createPet("Kitty", "dumpster cat");
+const abby = createPet("Abby", "yellow lab");
+const snape = createPet("Snape", "garden snake"); 
 
-console.log(baxter, bailey, kitty, abby, snape);
+baxter.visitReady = 5;
+bailey.visitReady = 4;
 
-baxter.ready();
-bailey.nope();
 
-console.log(baxter, bailey);
+const allPets = [
+    baxter,
+    bailey,
+    kitty,
+    abby,
+    snape
+];
+//console.log(allPets);
+
+const showPets = function (petArray) {
+    pets.innerHTML = "";
+
+    for (let pet of petArray) {
+        let status = "ready for visits!";
+        if (pet.visitReady <=3) {
+            status = "almost ready for visits!";
+        }
+    const li = document.createElement("li");
+    li.innerHTML = `<span class="pet-name">${pet.name}</span> the ${pet.species} is ${status}`;
+    pets.append(li);
+    }
+};
+
+statusButton.addEventListener("click", function () {
+    showPets(allPets);
+});
+
 
 
 
